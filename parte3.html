@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI - Parte 3: Infraestrutura</title>
+    <style>
+        :root { --primary: #d97706; --bg: #f8fafc; --card-bg: #ffffff; --text: #1e293b; --border: #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 800px; width: 100%; }
+        .header { background: linear-gradient(135deg, #92400e, #d97706); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        h2 { margin-top: 0; color: #92400e; font-size: 1.25rem; }
+        .badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
+        .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+        .radio-option { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
+        .radio-option input { margin-top: 3px; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 24px; }
+        .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .btn.secondary { background: #64748b; }
+        .btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span style="font-size: 0.85rem; text-transform: uppercase;">ANVISA - Centro Cirúrgico</span>
+            <h1 style="margin: 8px 0 0 0; font-size: 1.75rem;">Roteiro de Inspeção Objetiva (ROI)</h1>
+            <p style="margin: 8px 0 0 0; opacity: 0.9; font-size: 0.95rem;">Parte 3: Infraestrutura Estrutural e Sistemas Críticos de Suporte</p>
+        </div>
+
+        <form action="parte4.html">
+            <!-- Indicador 10 -->
+            <div class="card">
+                <span class="badge">Amparo: RDC 50/2002; RDC 63/2011</span>
+                <h2>10. Estrutura Física</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind10" value="0" required> <span><strong>0</strong> - Em área exclusiva, porém o acesso não é restrito.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind10" value="1"> <span><strong>1</strong> - Em área não exclusiva, mas com acesso restrito.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind10" value="2"> <span><strong>2</strong> - Possui área exclusiva, porém não apresenta todos os ambientes de apoio regulamentares.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind10" value="3"> <span><strong>3</strong> - Área exclusiva, acesso restrito. Ambientes completos (recepção, escovação, salas, RPA, utilidades).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind10" value="4"> <span><strong>4</strong> - Dispõe adicionalmente de salas de guarda/preparo de anestésicos, indução e estar.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind10" value="5"> <span><strong>5</strong> - Possui sala destinada a guarda de equipamentos para reserva técnica ou controles de acesso automático.</span></label>
+                </div>
+            </div>
+
+            <!-- Indicador 11 -->
+            <div class="card">
+                <span class="badge">Amparo: Art. 23 e 42 RDC 63/2011</span>
+                <h2>11. Manutenção da Estrutura Física</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind11" value="0" required> <span><strong>0</strong> - Maior parte da estrutura física degradada (salas ou arsenal) e sem registros.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind11" value="1"> <span><strong>1</strong> - Maior parte íntegra, porém áreas críticas apresentam sinais de degradação. Possui corretivas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind11" value="2"> <span><strong>2</strong> - Estrutura íntegra nas salas/arsenal, mas outras áreas com avarias. Sem preventiva sistemática.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind11" value="3"> <span><strong>3</strong> - Estrutura em boas condições, superfícies íntegras. Realiza e registra manutenções preventivas e corretivas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind11" value="4"> <span><strong>4</strong> - Existe um checklist estruturado para avaliar sistematicamente as condições físico-prediais.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind11" value="5"> <span><strong>5</strong> - Possui plano de manutenção predial preventiva e corretiva integrado e atualizado periodicamente.</span></label>
+                </div>
+            </div>
+
+            <!-- Indicador 12 -->
+            <div class="card">
+                <span class="badge">Amparo: Art. 38 RDC 63/2011</span>
+                <h2>12. Iluminação</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind12" value="0" required> <span><strong>0</strong> - Ambiente geral com algumas áreas sem iluminação ou lâmpadas queimadas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind12" value="1"> <span><strong>1</strong> - Iluminação precária que dificulta a realização segura das atividades assistenciais.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind12" value="2"> <span><strong>2</strong> - Iluminação adequada garantida em apenas algumas das salas cirúrgicas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind12" value="3"> <span><strong>3</strong> - Serviço possui iluminação totalmente compatível com o desenvolvimento seguro de todas as atividades.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind12" value="4"> <span><strong>4</strong> - Iluminação compatível com as atividades e equipada com controle de intensidade (dimmer).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind12" value="5"> <span><strong>5</strong> - Programa de gerenciamento das condições de iluminação do setor com registro de melhorias.</span></label>
+                </div>
+            </div>
+
+            <!-- Indicador 13 -->
+            <div class="card">
+                <span class="badge">Amparo: Art. 41 RDC 63/2011</span>
+                <h2>13. Sistema Elétrico de Emergência</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind13" value="0" required> <span><strong>0</strong> - Não dispõe de sistema de energia elétrica de emergência funcionando para o CC.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind13" value="1"> <span><strong>1</strong> - Dispõe de sistema de emergência, mas em manutenção ou insuficiente para suprir o setor.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind13" value="2"> <span><strong>2</strong> - Dispõe de sistema de energia de emergência, porém não realiza testes periódicos de gerador.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind13" value="3"> <span><strong>3</strong> - Serviço garante continuidade imediata através de sistema de emergência testado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind13" value="4"> <span><strong>4</strong> - O sistema de emergência atende a todo o hospital e há registros formais dos testes periódicos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind13" value="5"> <span><strong>5</strong> - O sistema atende à totalidade da carga crítica com testes e auditorias diárias de acionamento.</span></label>
+                </div>
+            </div>
+
+            <!-- Indicador 14 -->
+            <div class="card">
+                <span class="badge">Amparo: NBR-7256; Lei 13.589/2018</span>
+                <h2>14. Climatização</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind14" value="0" required> <span><strong>0</strong> - Não existe sistema de climatização artificial instalado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind14" value="1"> <span><strong>1</strong> - Sistema instalado, porém em más condições de limpeza ou inadequado (ex: ar condicionado de janela).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind14" value="2"> <span><strong>2</strong> - Sistema operando, mas sem registros técnicos, sem controle de pressão ou sem PMOC/RT.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind14" value="3"> <span><strong>3</strong> - Sistema adequado com PMOC e RT. Parâmetros críticos: Sala Cirúrgica (18°C a 22°C, umidade 45-55%, filtros G3+F8, pressão positiva).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind14" value="4"> <span><strong>4</strong> - Mantém PMOC atualizado e possui recomendações escritas e registros de ações para falhas do sistema.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind14" value="5"> <span><strong>5</strong> - Programa avançado de gerenciamento com laudos microbiológicos e de particulados frequentes.</span></label>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="parte2.html" class="btn secondary">⬅️ Voltar</a>
+                <button type="submit" class="btn">Avançar para Parte 4 ➡️</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
