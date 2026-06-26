@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI - Parte 2: Biossegurança</title>
+    <style>
+        :root { --primary: #059669; --bg: #f8fafc; --card-bg: #ffffff; --text: #1e293b; --border: #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 800px; width: 100%; }
+        .header { background: linear-gradient(135deg, #065f46, #059669); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        h2 { margin-top: 0; color: #065f46; font-size: 1.25rem; }
+        .badge { display: inline-block; background: #d1fae5; color: #065f46; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
+        .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+        .radio-option { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
+        .radio-option input { margin-top: 3px; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 24px; }
+        .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .btn.secondary { background: #64748b; }
+        .btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span style="font-size: 0.85rem; text-transform: uppercase;">ANVISA - Centro Cirúrgico</span>
+            <h1 style="margin: 8px 0 0 0; font-size: 1.75rem;">Roteiro de Inspeção Objetiva (ROI)</h1>
+            <p style="margin: 8px 0 0 0; opacity: 0.9; font-size: 0.95rem;">Parte 2: Biossegurança, Paramentação e Higienização</p>
+        </div>
+
+        <form action="parte3.html">
+            <!-- Indicador 6 -->
+            <div class="card">
+                <span class="badge">Amparo: Art. 33, 47 e 50 RDC 63/2011</span>
+                <h2>6. Equipamentos de Proteção Individual (EPI)</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind6" value="0" required> <span><strong>0</strong> - Não possui ou não utiliza EPI.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="1"> <span><strong>1</strong> - EPIs incompletos, insuficientes ou profissionais deixam o local vestindo EPI.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="2"> <span><strong>2</strong> - Possui EPIs em número suficiente, mas não utilizam conforme POP.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="3"> <span><strong>3</strong> - EPIs suficientes, instruções disponíveis e profissionais não saem do setor com eles.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="4"> <span><strong>4</strong> - Existe Plano de Gerenciamento e substituição periódica dos EPIs.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="5"> <span><strong>5</strong> - Aquisição de EPIs leva em consideração características individuais dos trabalhadores.</span></label>
+                </div>
+            </div>
+
+            <!-- Indicador 7 -->
+            <div class="card">
+                <span class="badge">Amparo: Art. 17 e 46 RDC 63/2011</span>
+                <h2>7. Vestimentas da Equipe Cirúrgica</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind7" value="0" required> <span><strong>0</strong> - Ausência de vestimenta cirúrgica e/ou serviço não processa/lava as mesmas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="1"> <span><strong>1</strong> - Não utilizadas por todos, ou saem do CC paramentados, ou sem processamento centralizado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="2"> <span><strong>2</strong> - Serviço fornece e equipe usa adequadamente, mas em quantidade insuficiente para a demanda.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="3"> <span><strong>3</strong> - Serviço fornece vestimentas adequadas, em quantidade compatível, sendo o responsável pelo processamento.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="4"> <span><strong>4</strong> - Paramentação avaliada com ações registradas; serviço proíbe adornos e equipe cumpre.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="5"> <span><strong>5</strong> - Aquisição considera características individuais; procedimento avaliado sistematicamente.</span></label>
+                </div>
+            </div>
+
+            <!-- Indicador 8 -->
+            <div class="card">
+                <span class="badge">Amparo: RDC 50/2002; RDC 63/2011</span>
+                <h2>8. Lavabos Cirúrgicos e Degermação das Mãos</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind8" value="0" required> <span><strong>0</strong> - Ausência de lavabos cirúrgicos ou produtos degermantes sem registro ANVISA.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="1"> <span><strong>1</strong> - Quantidade/profundidade incorreta, dispensadores com defeito ou falta de insumos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="2"> <span><strong>2</strong> - Quantidade atende, mas lavabos distantes ou com torneiras manuais por contato.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="3"> <span><strong>3</strong> - Área exclusiva próxima às salas, torneiras com comandos automáticos/pedal/cotovelo e insumos completos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="4"> <span><strong>4</strong> - Há relógio visível para escovação técnica e há registro de capacitação sobre preparo pré-operatório.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="5"> <span><strong>5</strong> - Procedimento avaliado sistematicamente com ações de conformidade e medidas corretivas registradas.</span></label>
+                </div>
+            </div>
+
+            <!-- Indicador 9 -->
+            <div class="card">
+                <span class="badge">Amparo: RDC 42/2010; RDC 36/2013</span>
+                <h2>9. Higienização das Mãos (HM)</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind9" value="0" required> <span><strong>0</strong> - Protocolo não implantado, falta de pias básicas ou produtos sem registro.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="1"> <span><strong>1</strong> - Protocolo desatualizado; dispensadores alcoólicos ausentes em pontos críticos ou com defeito.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="2"> <span><strong>2</strong> - Atende à legislação, exceto por não possuir capacitação de 100% dos profissionais.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="3"> <span><strong>3</strong> - Protocolo atualizado ("5 momentos") implantado, cartazes afixados, álcool gel em todos os pontos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="4"> <span><strong>4</strong> - Indicadores de adesão monitorados indiretamente por consumo com notificação mensal à ANVISA.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="5"> <span><strong>5</strong> - Monitoramento direto de adesão (Estratégia Multimodal) e orientação ativa de pacientes.</span></label>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="parte1.html" class="btn secondary">⬅️ Voltar</a>
+                <button type="submit" class="btn">Avançar para Parte 3 ➡️</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
