@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle - Protótipo Operacional</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { max-width: 650px; width: 100%; background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); text-align: center; }
+        .icon-container { width: 64px; height: 64px; background: #dbeafe; color: #2563eb; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 24px auto; font-size: 28px; }
+        h1 { font-size: 2rem; color: var(--primary); margin: 0 0 12px 0; font-weight: 800; }
+        .subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.5; }
+        .divider { height: 1px; background: var(--border); margin: 24px 0; }
+        .props-list { text-align: left; margin: 24px 0; padding-left: 20px; }
+        .props-list li { margin-bottom: 12px; color: var(--text-secondary); line-height: 1.4; font-size: 0.95rem; }
+        .btn-start { display: inline-block; background: var(--primary); color: white; border: none; padding: 16px 32px; border-radius: 10px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.2s; text-decoration: none; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2); }
+        .btn-start:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon-container">📊</div>
+        <h1>Protótipo de Otimização Operacional</h1>
+        <p class="subtitle">Ferramenta individual de apoio tático para agentes de campo. Desenvolvido para análise de viabilidade da Direção quanto à automação de fluxos informacionais em tempo real.</p>
+        
+        <div class="divider"></div>
+        
+        <ul class="props-list">
+            <li><strong>Mitigação de Ruído Cognitivo:</strong> Transforma critérios densos e textuais em uma esteira de seleção binária e escalonada de 0 a 5.</li>
+            <li><strong>Geração Descentralizada:</strong> Autonomia total para o agente em campo compilar dados técnicos sem dependência de infraestrutura complexa.</li>
+            <li><strong>Circuito Fechado Primário:</strong> Exportação instantânea em formato otimizado para preenchimento e alimentação manual por retaguarda de estágio.</li>
+        </ul>
+
+        <div class="divider"></div>
+        
+        <a href="parte1.html" class="btn-start">Iniciar Amostragem de Protocolo Digital 🚀</a>
+    </div>
+</body>
+</html>
