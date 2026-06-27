@@ -1,93 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">  
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROI - Parte 4: Equipamentos e Envio</title>
+    <title>ROI - Parte 4: Finalização</title>
     <style>
         :root { --primary: #dc2626; --bg: #f8fafc; --card-bg: #ffffff; --text: #1e293b; --border: #e2e8f0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; justify-content: center; }
         .container { max-width: 800px; width: 100%; }
-        .header { background: linear-gradient(135deg, #7f1d1d, #dc2626); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .header { background: linear-gradient(135deg, #7f1d1d, #dc2626); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); }
         h2 { margin-top: 0; color: #7f1d1d; font-size: 1.25rem; }
         .badge { display: inline-block; background: #fee2e2; color: #7f1d1d; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
         .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-        .radio-option { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
-        .radio-option input { margin-top: 3px; }
-        textarea { width: 100%; height: 100px; border: 1px solid var(--border); border-radius: 8px; padding: 10px; box-sizing: border-box; resize: vertical; margin-top: 8px; font-family: inherit; }
-        .checkbox-group { display: flex; flex-direction: column; gap: 10px; margin: 15px 0; }
-        .checkbox-option { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+        .radio-option { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+        .interative-text { background: #f1f5f9; padding: 12px; border-left: 4px solid #64748b; font-size: 0.9rem; color: #475569; margin: 16px 0; border-radius: 0 8px 8px 0; font-style: italic; }
+        textarea { width: 100%; height: 120px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; box-sizing: border-box; margin-top: 8px; font-family: inherit; }
         .nav-buttons { display: flex; justify-content: space-between; margin-top: 24px; }
-        .btn { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .btn.secondary { background: #64748b; box-shadow: none; }
-        .btn:hover { opacity: 0.95; transform: translateY(-1px); }
+        .btn { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; }
+        .btn.secondary { background: #64748b; }
+        .btn:hover { opacity: 0.95; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <span style="font-size: 0.85rem; text-transform: uppercase;">ANVISA - Centro Cirúrgico</span>
-            <h1 style="margin: 8px 0 0 0; font-size: 1.75rem;">Roteiro de Inspeção Objetiva (ROI)</h1>
-            <p style="margin: 8px 0 0 0; opacity: 0.9; font-size: 0.95rem;">Parte 4: Equipamentos, CME, Segurança do Paciente e Envio Final</p>
+            <span style="font-size: 0.85rem; text-transform: uppercase; font-weight: bold;">Fase Final do Roteiro</span>
+            <h1 style="margin: 8px 0 0 0; font-size: 1.75rem;">Mapeamento de Insumos e Segurança</h1>
+            <p style="margin: 8px 0 0 0; opacity: 0.9; font-size: 0.95rem;">Parte 4: Equipamentos, CME, Saneantes e Protocolo do Paciente</p>
         </div>
 
-        <!-- Formulários Simplicados p/ Exemplo: Indicadores 15 a 20 compilados -->
-        <form id="finalForm" onsubmit="alert('Relatório processado com sucesso! Integrando dados...'); return false;">
+        <form id="finalForm">
             
+            <div class="interative-text">💡 "Agente, a segurança de um bloco cirúrgico começa na infraestrutura fixa, mas se consolida na disponibilidade imediata de equipamentos vitais de suporte à vida nas salas de operação."</div>
+
             <div class="card">
                 <span class="badge">Amparo: Art. 17, 53 e 55 RDC 63/2011</span>
                 <h2>15. Equipamentos e Materiais das Salas Cirúrgicas</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind15" value="3" checked> <span><strong>3</strong> - Equipamentos conforme demanda e regularizados (Mesa cirúrgica, focos, bisturi elétrico, rede de gases).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind15" value="0" required> <span><strong>0</strong> - Não dispõe de equipamentos e materiais mínimos para atendimento.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind15" value="1"> <span><strong>1</strong> - Insumos não exclusivos ou em falta parcial, mas sem paralisar cirurgias totalmente.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind15" value="2"> <span><strong>2</strong> - Possui os materiais essenciais, mas em quantitativo insuficiente para a demanda rotineira.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind15" value="3"> <span><strong>3</strong> - Adequado e regularizado (mesa comandada, focos, aparelhos de anestesia e rede de gases).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind15" value="4"> <span><strong>4</strong> - Equipamentos constam em lista patrimonial atualizada e são avaliados periodicamente.</span></label>
                     <label class="radio-option"><input type="radio" name="ind15" value="5"> <span><strong>5</strong> - Sistema automatizado de gerenciamento de ciclo de vida e engenharia clínica ativa.</span></label>
                 </div>
             </div>
 
             <div class="card">
-                <span class="badge">Amparo: RDC 15/2012 (CME)</span>
-                <h2>19. Armazenamento de Materiais Esterilizados e Interface CME</h2>
+                <span class="badge">Amparo: Art. 17, 53, 55 e 58 RDC 63/2011</span>
+                <h2>16. Equipamentos e Materiais - Sala de Recuperação Anestésica (RPA)</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind19" value="3" checked> <span><strong>3</strong> - Materiais íntegros, quantitativo correto, local de guarda exclusivo, restrito e não poroso.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind19" value="4"> <span><strong>4</strong> - Cada caixa cirúrgica possui integrador químico integrado (classe 5 ou 6) anexado ao prontuário.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind16" value="0" required> <span><strong>0</strong> - Não dispõe de equipamentos para suporte pós-anestésico básico.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind16" value="1"> <span><strong>1</strong> - Não são exclusivos da unidade ou apresentam falta de equipamentos periféricos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind16" value="2"> <span><strong>2</strong> - Possui equipamentos essenciais, mas em volume inferior ao número de leitos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind16" value="3"> <span><strong>3</strong> - Atende o perfil (monitores de sinais, oxímetro de pulso, carrinho de emergência completo e vácuo).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind16" value="4"> <span><strong>4</strong> - Insumos inventariados e monitorados de forma sistemática por liderança técnica.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind16" value="5"> <span><strong>5</strong> - Unidade integrada com engenharia clínica dedicada e substituição programada de ativos.</span></label>
+                </div>
+            </div>
+
+            <div class="interative-text">💡 "De nada adianta ter o maquinário mais moderno se não há comprovação documental e rotina de calibração que garanta o funcionamento seguro no momento crítico."</div>
+
+            <div class="card">
+                <span class="badge">Amparo: Art. 23 (Inciso IX) RDC 63/2011</span>
+                <h2>17. Manutenção de Equipamentos</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind17" value="0" required> <span><strong>0</strong> - Não realiza nenhum tipo de manutenção técnica ou calibração.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind17" value="1"> <span><strong>1</strong> - Manutenções não abrangem tudo, ou atua apenas sob caráter corretivo emergencial.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind17" value="2"> <span><strong>2</strong> - Realiza preventivas e corretivas, mas os históricos e laudos de execução estão incompletos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind17" value="3"> <span><strong>3</strong> - Realiza manutenções preventivas e corretivas sistemáticas com registros auditáveis.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind17" value="4"> <span><strong>4</strong> - Cronograma ativo informatizado e participação estruturada em comissão de tenovigilância.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind17" value="5"> <span><strong>5</strong> - Gestão de ativos coordenada por engenheiro clínico habilitado exclusivo da planta.</span></label>
                 </div>
             </div>
 
             <div class="card">
-                <span class="badge">Amparo: Portaria Federal 1.377/2013</span>
-                <h2>20. Protocolo para Cirurgia Segura</h2>
+                <span class="badge">Amparo: Art. 23, 36 e 52 RDC 63/2011</span>
+                <h2>18. Limpeza e Desinfecção do Ambiente e dos Equipamentos</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind20" value="3" checked> <span><strong>3</strong> - Checklist implantado em 3 momentos críticos da cirurgia. Capacitação documentada de equipes.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind20" value="5"> <span><strong>5</strong> - Avaliação anual estruturada, monitoramento ativo de metas e notificações automáticas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind18" value="0" required> <span><strong>0</strong> - Ambiente visivelmente sujo ou uso de saneantes de caráter puramente domiciliar.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind18" value="1"> <span><strong>1</strong> - Conservado, porém a execução física da limpeza diverge totalmente do POP técnico.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind18" value="2"> <span><strong>2</strong> - Limpo e sem odores conforme POP, porém ausência total de planilhas de registros diários.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind18" value="3"> <span><strong>3</strong> - Ambientes íntegros, registros preenchidos e uso exclusivo de saneantes profissionais regularizados.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind18" value="4"> <span><strong>4</strong> - Supervisão direta em tempo real e mapa de liberação de salas nos intervalos cirúrgicos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind18" value="5"> <span><strong>5</strong> - Auditoria com validação microbiológica e ATP realizada em coordenação com a CCIH.</span></label>
                 </div>
             </div>
 
-            <!-- CONTROLE FINAL DO AGENTE -->
-            <div class="card" style="border: 2px solid #cbd5e1; background: #fdfdfd;">
-                <h2 style="color: #334155; display: flex; align-items: center; gap: 8px;">📝 Painel de Conclusão e Controle Operacional</h2>
-                <p style="font-size: 0.9rem; color: #64748b; margin: 4px 0 12px 0;">Área de fechamento de relatório exclusiva para o agente de saúde da VISA.</p>
-                
-                <label style="font-weight: 600; font-size: 0.9rem;">Observações Técnicas do Agente:</label>
-                <textarea placeholder="Digite aqui as particularidades críticas, justificativas regulatórias ou detalhes observados in loco..."></textarea>
-                
-                <div class="checkbox-group">
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="db_visa" checked disabled>
-                        <span>Enviar automaticamente para o Dashboard Interno (Triagem)</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" id="sendExternal" name="send_external">
-                        <span style="color: #b91c1c;">⚠️ Enviar Cópia com Notificação para o E-mail do Estabelecimento Regulado</span>
-                    </label>
+            <div class="interative-text">💡 "Por fim, o ciclo se fecha na rastreabilidade dos materiais vindos da esterilização central e na aplicação irrestrita do protocolo nacional de cirurgia segura para evitar falhas humanas."</div>
+
+            <div class="card">
+                <span class="badge">Amparo: RDC 15/2012 (CME)</span>
+                <h2>19. Armazenamento de Materiais Esterilizados e Interface com o CME</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind19" value="0" required> <span><strong>0</strong> - Más condições de envelopamento, falta de rastreabilidade ou reprocessamento proibido.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind19" value="1"> <span><strong>1</strong> - Sem garantia de rastreabilidade, ou local de armazenamento aberto/inadequado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind19" value="2"> <span><strong>2</strong> - Materiais chegam corretos, mas prateleiras porosas ou sem resistência a desinfetantes.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind19" value="3"> <span><strong>3</strong> - Envelopamento e rastreio íntegros. Local restrito com prateleiras laváveis e não porosas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind19" value="4"> <span><strong>4</strong> - Presença de integrador químico (classe 5 ou 6) analisado e colado no prontuário do paciente.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind19" value="5"> <span><strong>5</strong> - Auditorias periódicas estruturadas de armazenamento com planos de mitigação ativos.</span></label>
                 </div>
+            </div>
+
+            <div class="card">
+                <span class="badge">Amparo: Portaria Federal 1.377/2013; RDC 36/2013</span>
+                <h2>20. Protocolo para Cirurgia Segura</h2>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="ind20" value="0" required> <span><strong>0</strong> - O Protocolo de Verificação de Segurança não está implantado na rotina.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind20" value="1"> <span><strong>1</strong> - Protocolo indisponível ou suprime uma das três etapas críticas do checklist nacional.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind20" value="2"> <span><strong>2</strong> - Possui as três etapas completas, mas sem registro de capacitação de toda a escala médica/enfermagem.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind20" value="3"> <span><strong>3</strong> - Checklist aplicado em 3 momentos (indução, incisão, saída). Eventos adversos são notificados.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind20" value="4"> <span><strong>4</strong> - Cobertura em 100% dos prontuários eletivos com monitoramento do índice de adesão técnico.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind20" value="5"> <span><strong>5</strong> - Participação anual ativa na avaliação nacional de segurança, com monitoramento de metas.</span></label>
+                </div>
+            </div>
+
+            <div class="card" style="border: 2px dashed #cbd5e1;">
+                <h2>Particularidades Técnicas Observadas (Campo Livre)</h2>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: -8px;">Registre detalhes textuais pontuais da fiscalização para orientação do estagiário.</p>
+                <textarea id="obsCampo" placeholder="Ex: Hospital com rachadura na sala 02, autoclave da CME em manutenção temporária..."></textarea>
             </div>
 
             <div class="nav-buttons">
                 <a href="parte3.html" class="btn secondary">⬅️ Voltar</a>
-                <button type="submit" class="btn">Gerar Relatório Técnico Atualizado (PDF) 🚀</button>
+                <button type="button" onclick="gerarRelatorioEstruturado()" class="btn">Gerar e Visualizar Relatório Técnico 🚀</button>
             </div>
         </form>
+
+        <div id="outputRelatorio" style="display:none; margin-top: 30px;" class="card">
+            <h2 style="color: #1e293b;">📄 Relatório Otimizado Pronto</h2>
+            <p style="font-size: 0.85rem; color: #475569;">Copie o bloco de texto abaixo e repasse direto para o estagiário realizar a inserção manual na planilha consolidada.</p>
+            <textarea id="txtRelatorio" style="height: 200px; background: #f8fafc; font-family: monospace;" readonly></textarea>
+        </div>
     </div>
+
+    <script>
+        function gerarRelatorioEstruturado() {
+            const form = document.getElementById('finalForm');
+            if(!form.checkValidity()) {
+                alert('Por favor, selecione os enquadramentos de todos os indicadores antes de fechar o relatório.');
+                return;
+            }
+            
+            const r15 = document.querySelector('input[name="ind15"]:checked').value;
+            const r16 = document.querySelector('input[name="ind16"]:checked').value;
+            const r17 = document.querySelector('input[name="ind17"]:checked').value;
+            const r18 = document.querySelector('input[name="ind18"]:checked').value;
+            const r19 = document.querySelector('input[name="ind19"]:checked').value;
+            const r20 = document.querySelector('input[name="ind20"]:checked').value;
+            const obs = document.getElementById('obsCampo').value || "Nenhuma particularidade registrada.";
+
+            let txt = `=== EXTRATO DE PERFORMANCE OPERACIONAL - PARTE 4 ===\n`;
+            txt += `Data da Amostragem: ${new Date().toLocaleDateString('pt-BR')}\n\n`;
+            txt += `[INDICADORES DE FLUXO - ENQUADRAMENTOS AVANÇADOS]:\n`;
+            txt += `- Indicador 15 (Equipamentos de Sala): Nota ${r15}\n`;
+            txt += `- Indicador 16 (Insumos da RPA): Nota ${r16}\n`;
+            txt += `- Indicador 17 (Manutenção de Ativos): Nota ${r17}\n`;
+            txt += `- Indicador 18 (Saneantes/Limpeza): Nota ${r18}\n`;
+            txt += `- Indicador 19 (Armazenamento/CME): Nota ${r19}\n`;
+            txt += `- Indicador 20 (Cirurgia Segura): Nota ${r20}\n\n`;
+            txt += `[MEMORIAL DESCRITIVO / OBSERVAÇÕES]:\n${obs}\n\n`;
+            txt += `====================================================\n`;
+            txt += `Instrução: Repassar este bloco textual à retaguarda operacional para atualização imediata do status geral.`;
+
+            document.getElementById('txtRelatorio').value = txt;
+            document.getElementById('outputRelatorio').style.display = 'block';
+            document.getElementById('outputRelatorio').scrollIntoView({ behavior: 'smooth' });
+        </script>
 </body>
 </html>
