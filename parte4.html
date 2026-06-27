@@ -9,15 +9,17 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; justify-content: center; }
         .container { max-width: 800px; width: 100%; }
         .header { background: linear-gradient(135deg, #7f1d1d, #dc2626); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; }
-        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         h2 { margin-top: 0; color: #7f1d1d; font-size: 1.25rem; }
         .badge { display: inline-block; background: #fee2e2; color: #7f1d1d; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
         .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-        .radio-option { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+        .radio-option { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
+        .radio-option input { margin-top: 3px; }
         .interative-text { background: #f1f5f9; padding: 12px; border-left: 4px solid #64748b; font-size: 0.9rem; color: #475569; margin: 16px 0; border-radius: 0 8px 8px 0; font-style: italic; }
-        textarea { width: 100%; height: 120px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; box-sizing: border-box; margin-top: 8px; font-family: inherit; }
+        textarea { width: 100%; height: 120px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; box-sizing: border-box; margin-top: 8px; font-family: inherit; font-size: 0.95rem; }
         .nav-buttons { display: flex; justify-content: space-between; margin-top: 24px; }
-        .btn { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; }
+        .btn { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
         .btn.secondary { background: #64748b; }
         .btn:hover { opacity: 0.95; }
     </style>
@@ -34,10 +36,9 @@
             
             <div class="interative-text">💡 "Agente, a segurança de um bloco cirúrgico começa na infraestrutura fixa, mas se consolida na disponibilidade imediata de equipamentos vitais de suporte à vida nas salas de operação."</div>
 
-            <!-- Indicador 15 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 17, 53 e 55 RDC 63/2011</span>
-                <h2>15. Equipamentos e Materials das Salas Cirúrgicas</h2>
+                <h2>15. Equipamentos e Materiais das Salas Cirúrgicas</h2>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="ind15" value="0" data-text="Não dispõe de equipamentos e materiais mínimos para atendimento." required> <span><strong>0</strong> - Não dispõe de equipamentos e materiais mínimos para atendimento.</span></label>
                     <label class="radio-option"><input type="radio" name="ind15" value="1" data-text="Insumos não exclusivos ou em falta parcial, mas sem paralisar cirurgias totalmente."> <span><strong>1</strong> - Insumos não exclusivos ou em falta parcial, mas sem paralisar cirurgias totalmente.</span></label>
@@ -48,7 +49,6 @@
                 </div>
             </div>
 
-            <!-- Indicador 16 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 17, 53, 55 e 58 RDC 63/2011</span>
                 <h2>16. Equipamentos e Materiais - Sala de Recuperação Anestésica (RPA)</h2>
@@ -62,7 +62,6 @@
                 </div>
             </div>
 
-            <!-- Indicador 17 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 23 (Inciso IX) RDC 63/2011</span>
                 <h2>17. Manutenção de Equipamentos</h2>
@@ -71,12 +70,11 @@
                     <label class="radio-option"><input type="radio" name="ind17" value="1" data-text="Manutenções não abrangem tudo, ou atua apenas sob caráter corretivo emergencial."> <span><strong>1</strong> - Manutenções não abrangem tudo, ou atua apenas sob caráter corretivo emergencial.</span></label>
                     <label class="radio-option"><input type="radio" name="ind17" value="2" data-text="Realiza preventivas e corretivas, mas os históricos e laudos de execução estão incompletos."> <span><strong>2</strong> - Realiza preventivas e corretivas, mas os históricos e laudos de execução estão incompletos.</span></label>
                     <label class="radio-option"><input type="radio" name="ind17" value="3" data-text="Realiza manutenções preventivas e corretivas sistemáticas com registros auditáveis."> <span><strong>3</strong> - Realiza manutenções preventivas e corretivas sistemáticas com registros auditáveis.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind17" value="4" data-text="Cronograma ativo informatizado e participação estruturada em comissão de tenovigilância."> <span><strong>4</strong> - Cronograma ativo informatizado e participação estruturada em comissão de tenovigilância.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind17" value="4" data-text="Cronograma ativo informatizado e participação estruturada em comissão de tecnovigilância."> <span><strong>4</strong> - Cronograma ativo informatizado e participação estruturada em comissão de tecnovigilância.</span></label>
                     <label class="radio-option"><input type="radio" name="ind17" value="5" data-text="Gestão de ativos coordenada por engenheiro clínico habilitado exclusivo da planta."> <span><strong>5</strong> - Gestão de ativos coordenada por engenheiro clínico habilitado exclusivo da planta.</span></label>
                 </div>
             </div>
 
-            <!-- Indicador 18 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 23, 36 e 52 RDC 63/2011</span>
                 <h2>18. Limpeza e Desinfecção do Ambiente e dos Equipamentos</h2>
@@ -90,7 +88,6 @@
                 </div>
             </div>
 
-            <!-- Indicador 19 -->
             <div class="card">
                 <span class="badge">Amparo: RDC 15/2012 (CME)</span>
                 <h2>19. Armazenamento de Materiais Esterilizados e Interface com o CME</h2>
@@ -104,7 +101,6 @@
                 </div>
             </div>
 
-            <!-- Indicador 20 -->
             <div class="card">
                 <span class="badge">Amparo: Portaria Federal 1.377/2013; RDC 36/2013</span>
                 <h2>20. Protocolo para Cirurgia Segura</h2>
@@ -143,7 +139,7 @@
                 return { value: parseInt(el.value), text: el.getAttribute('data-text') };
             };
 
-            const payload = {
+            const payloadP4 = {
                 ind15: getSelectedData('ind15'),
                 ind16: getSelectedData('ind16'),
                 ind17: getSelectedData('ind17'),
@@ -153,7 +149,7 @@
                 obs: document.getElementById('obsCampo').value || "Nenhuma observação extra cadastrada."
             };
 
-            localStorage.setItem('inspecao_p4_data', JSON.stringify(payload));
+            localStorage.setItem('inspecao_p4_data', JSON.stringify(payloadP4));
             window.location.href = 'relatorio.html';
         }
     </script>
