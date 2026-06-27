@@ -49,7 +49,7 @@
         .meta-item span { display: block; font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; }
         .meta-item strong { font-size: 1.05rem; }
 
-        /* Bloco de Score (KPI) */
+        /* Bloco de Score (KPI) Duplo */
         .score-container {
             display: flex;
             background: var(--card-bg);
@@ -58,20 +58,40 @@
             padding: 24px;
             margin-bottom: 30px;
             align-items: center;
-            gap: 32px;
+            gap: 24px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        .score-boxes-wrapper {
+            display: flex;
+            gap: 16px;
         }
         .score-box {
             background: #f1f5f9;
-            padding: 20px;
+            padding: 16px;
             border-radius: 12px;
             text-align: center;
-            min-width: 140px;
+            min-width: 110px;
         }
-        .score-box .num { font-size: 2.5rem; font-weight: 800; color: var(--primary); display: block; line-height: 1; }
-        .score-box .label { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #64748b; margin-top: 4px; display: block;}
-        .score-diagnostic h2 { margin: 0 0 8px 0; font-size: 1.4rem; color: #1e3a8a; }
+        .score-box .num { font-size: 2.2rem; font-weight: 800; color: var(--primary); display: block; line-height: 1; }
+        .score-box .label { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: #64748b; margin-top: 6px; display: block;}
+        
+        .score-diagnostic { flex: 1; }
+        .score-diagnostic h2 { margin: 0 0 4px 0; font-size: 1.4rem; color: #1e3a8a; }
         .score-diagnostic p { margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.5; }
+
+        /* Status Badge Dinâmico no Diagnóstico */
+        .status-final {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .status-aceitavel { background: #d1fae5; color: #065f46; }
+        .status-toleravel { background: #fef3c7; color: #92400e; }
+        .status-inaceitavel { background: #fee2e2; color: #991b1b; }
 
         /* Tabela Descritiva */
         .report-table { 
@@ -96,7 +116,7 @@
         .report-table td { padding: 16px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.95rem; }
         .report-table tr:last-child td { border-bottom: none; }
         
-        /* Badges de Notas */
+        /* Badges de Notas da Tabela */
         .badge-score {
             display: inline-block;
             font-weight: 700;
@@ -107,7 +127,7 @@
         }
         .score-high { background: #d1fae5; color: #065f46; }
         .score-mid { background: #fef3c7; color: #92400e; }
-        .score-low { background: #fee2e2; color: #dc2626; }
+        .score-low { background: #fee2e2; color: #991b1b; }
 
         /* Área de Observações */
         .obs-card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 12px; margin-bottom: 40px; }
@@ -154,13 +174,19 @@
         </div>
 
         <div class="score-container">
-            <div class="score-box">
-                <span class="num" id="txtMedia">0.0</span>
-                <span class="label">Média Global</span>
+            <div class="score-boxes-wrapper">
+                <div class="score-box">
+                    <span class="num" id="txtNotaTotal">0</span>
+                    <span class="label">Nota Total / 100</span>
+                </div>
+                <div class="score-box">
+                    <span class="num" id="txtMedia">0.0</span>
+                    <span class="label">Média Global</span>
+                </div>
             </div>
             <div class="score-diagnostic">
-                <h2>Classificação de Risco Sanitário</h2>
-                <p id="txtDiagnostico">Calculando o diagnóstico da planta física e assistencial...</p>
+                <div id="badgeStatus" class="status-final">Calculando...</div>
+                <p id="txtDiagnostico">Processando a conformidade da planta física e assistencial...</p>
             </div>
         </div>
 
@@ -216,26 +242,17 @@
         };
 
         window.addEventListener('DOMContentLoaded', () => {
-            // Resgata os dados brutos salvos pelas partes
             const p1 = JSON.parse(localStorage.getItem('inspecao_p1_data')) || {};
             const p2 = JSON.parse(localStorage.getItem('inspecao_p2_data')) || {};
             const p3 = JSON.parse(localStorage.getItem('inspecao_p3_data')) || {};
             const p4 = JSON.parse(localStorage.getItem('inspecao_p4_data')) || {};
 
-            // Fallback caso a P1 não use a nova estrutura limpa
-            const hospital = p1.hospital || "Estabelecimento não identificado";
-            const cnpj = p1.cnpj || "Não informado";
-            const fiscal = p1.fiscal || "Não informado";
-            const dataIns = p1.dataIns || "";
+            document.getElementById('lblHospital').innerText = p1.hospital || "Não identificado";
+            document.getElementById('lblCnpj').innerText = p1.cnpj || "Não informado";
+            document.getElementById('lblFiscal').innerText = p1.fiscal || "Não informado";
+            document.getElementById('lblData').innerText = p1.dataIns ? p1.dataIns.split('-').reverse().join('/') : 'Não Informada';
 
-            document.getElementById('lblHospital').innerText = hospital;
-            document.getElementById('lblCnpj').innerText = cnpj;
-            document.getElementById('lblFiscal').innerText = fiscal;
-            document.getElementById('lblData').innerText = dataIns ? dataIns.split('-').reverse().join('/') : 'Não Informada';
-
-            // Agrupa todos os indicadores brutos de forma centralizada
             const rawData = { ...p1, ...p2, ...p3, ...p4 };
-
             const tbody = document.getElementById('corpoRelatorio');
             let somaNotas = 0;
             let totalIndicadores = 0;
@@ -248,7 +265,6 @@
                     let nota = 0;
                     let texto = "Enquadramento selecionado.";
 
-                    // Tratamento Ultra-Resiliente: aceita objeto {value, text} ou dado direto
                     if (typeof dado === 'object' && dado.value !== undefined) {
                         nota = parseInt(dado.value);
                         texto = dado.text || `Opção selecionada: ${nota}`;
@@ -278,27 +294,40 @@
                 }
             }
 
-            // Exibe a média e o diagnóstico final
             if (totalIndicadores > 0) {
+                // Como o máximo técnico do roteiro é 100 (20 questões x 5 pontos)
+                // A soma das notas já equivale diretamente à pontuação de 0 a 100.
+                const notaFinal = somaNotas; 
                 const mediaGeral = somaNotas / totalIndicadores;
+
+                document.getElementById('txtNotaTotal').innerText = notaFinal;
                 document.getElementById('txtMedia').innerText = mediaGeral.toFixed(1);
 
+                const badgeStatus = document.getElementById('badgeStatus');
                 let diagnosticoText = "";
-                if (mediaGeral >= 4.0) {
-                    diagnosticoText = "<strong>Baixo Risco (Conformidade Alta):</strong> O bloco cirúrgico apresenta alto nível de conformidade técnica, barreiras estruturais seguras e processos de biossegurança controlados.";
-                } else if (mediaGeral >= 2.5) {
-                    diagnosticoText = "<strong>Médio Risco (Conformidade Moderada):</strong> Foram identificadas inconformidades operacionais ou prediais pontuais. Requer elaboração de Plano de Ação Corretiva para adequação de rotinas.";
+
+                // Nova Regra de Enquadramento Sanitário (Baseada em 100 pontos / 100%)
+                if (notaFinal >= 75) {
+                    badgeStatus.innerText = "Status: Aceitável";
+                    badgeStatus.className = "status-final status-aceitavel";
+                    diagnosticoText = "O bloco cirúrgico atinge nível de excelência regulatória superior a 75%. Apresenta conformidade robusta nas barreiras técnicas, fluxos adequados e mitigação severa de riscos.";
+                } else if (notaFinal >= 20) {
+                    badgeStatus.innerText = "Status: Tolerável";
+                    badgeStatus.className = "status-final status-toleravel";
+                    diagnosticoText = "O bloco cirúrgico encontra-se em faixa de risco moderado (entre 20% e 74%). Apresenta inconformidades que demandam plano imediato de adequação técnica e monitoramento corretivo.";
                 } else {
-                    diagnosticoText = "<strong>Alto Risco (Crítico):</strong> Desvios severos identificados nas barreiras de biossegurança ou sistemas críticos de suporte à vida. Necessita de intervenção e plano de contingência sanitário imediato.";
+                    badgeStatus.innerText = "Status: Inaceitável";
+                    badgeStatus.className = "status-final status-inaceitavel";
+                    diagnosticoText = "<strong>Risco Crítico Sanitário detectado!</strong> A conformidade geral da planta está abaixo de 20%. Há desvios gravíssimos em processos de esterilização, suporte à vida ou infraestrutura básica.";
                 }
-                document.getElementById('txtDiagnostic').innerHTML = diagnosticoText;
+                document.getElementById('txtDiagnostico').innerHTML = diagnosticoText;
             } else {
-                // Caso extremo de vazamento total de dados do localStorage
+                document.getElementById('txtNotaTotal').innerText = "0";
                 document.getElementById('txtMedia').innerText = "0.0";
-                document.getElementById('txtDiagnostico').innerHTML = "<span style='color: var(--danger)'>Nenhum indicador foi detectado no armazenamento local. Certifique-se de preencher as etapas anteriores e avançar pelos botões oficiais.</span>";
+                document.getElementById('badgeStatus').innerText = "Erro";
+                document.getElementById('txtDiagnostico').innerHTML = "Nenhum dado encontrado nas variáveis locais.";
             }
 
-            // Recuperação do campo livre de observações
             document.getElementById('txtObs').innerText = p4.obs || rawData.obs || "Nenhuma observação extra cadastrada.";
         });
 
