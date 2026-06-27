@@ -3,154 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Aprovação e Emissão de Documento Final</title>
+    <title>ROI - Relatório Consolidado de Inspeção</title>
     <style>
-        :root { --primary: #1e3a8a; --bg: #f8fafc; --card-bg: #ffffff; --border: #e2e8f0; --text: #0f172a; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 850px; width: 100%; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 24px; }
-        .score-box { text-align: center; padding: 24px; border-radius: 12px; margin-bottom: 24px; font-weight: bold; border: 2px solid transparent; }
-        .status-alert { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
-        .status-ok { background: #dcfce7; color: #166534; border-color: #86efac; }
-        .score-val { font-size: 3.5rem; display: block; font-weight: 800; margin-top: 4px; }
-        .item-pendencia { background: #fff7ed; border-left: 4px solid #ea580c; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 12px; font-size: 0.95rem; }
-        .item-pendencia strong { color: #c2410c; }
-        .item-conforme { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 12px; font-size: 0.95rem; color: #166534; }
-        .action-box { display: flex; gap: 15px; justify-content: center; margin-top: 35px; background: #f1f5f9; padding: 20px; border-radius: 12px; }
-        .btn { color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; text-decoration: none; display: inline-block; }
-        .btn.primary { background: #2563eb; }
-        .btn.success { background: #166534; }
-        .btn.secondary { background: #64748b; }
-        .btn:hover { opacity: 0.9; }
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --border: #e2e8f0;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            margin: 0; 
+            padding: 40px 20px; 
+            display: flex; 
+            justify-content: center; 
+        }
+        .container { max-width: 900px; width: 100%; }
         
+        /* Cartão de Cabeçalho */
+        .header-report { 
+            background: linear-gradient(135deg, #0f172a, #1e3a8a); 
+            color: white; 
+            padding: 32px; 
+            border-radius: 16px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        
+        /* Grid de Metadados */
+        .meta-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 16px; 
+            margin-top: 24px; 
+            padding-top: 24px; 
+            border-top: 1px solid rgba(255,255,255,0.15); 
+        }
+        .meta-item span { display: block; font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; }
+        .meta-item strong { font-size: 1.05rem; }
+
+        /* Bloco de Score (KPI) */
+        .score-container {
+            display: flex;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 30px;
+            align-items: center;
+            gap: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        .score-box {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 140px;
+        }
+        .score-box .num { font-size: 2.5rem; font-weight: 800; color: var(--primary); display: block; line-height: 1; }
+        .score-box .label { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #64748b; margin-top: 4px; display: block;}
+        .score-diagnostic h2 { margin: 0 0 8px 0; font-size: 1.4rem; color: #1e3a8a; }
+        .score-diagnostic p { margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.5; }
+
+        /* Tabela Descritiva */
+        .report-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .report-table th { 
+            background: #f1f5f9; 
+            padding: 14px 16px; 
+            text-align: left; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            color: #475569; 
+            letter-spacing: 0.05em;
+        }
+        .report-table td { padding: 16px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.95rem; }
+        .report-table tr:last-child td { border-bottom: none; }
+        
+        /* Badges de Notas */
+        .badge-score {
+            display: inline-block;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .score-high { background: #d1fae5; color: #065f46; }
+        .score-mid { background: #fef3c7; color: #92400e; }
+        .score-low { background: #fee2e2; color: #92400e; }
+
+        /* Área de Observações */
+        .obs-card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 12px; margin-bottom: 40px; }
+        .obs-card h3 { margin: 0 0 12px 0; color: #0f172a; font-size: 1.1rem; }
+        .obs-card p { margin: 0; color: #475569; font-style: italic; white-space: pre-wrap; line-height: 1.6; }
+
+        /* Botões de Ação */
+        .actions-panel { display: flex; justify-content: space-between; gap: 16px; }
+        .btn { background: var(--primary-light); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; }
+        .btn.secondary { background: #64748b; }
+        .btn.success { background: var(--success); }
+        .btn:hover { opacity: 0.95; }
+
+        /* Configurações de Impressão PDF limpa */
         @media print {
-            .no-print, .action-box { display: none !important; }
-            body { background: white; padding: 0; }
-            .card { border: none; box-shadow: none; padding: 0; }
+            body { background: white; padding: 0; color: black; }
+            .header-report { background: none; color: black; padding: 0; box-shadow: none; border-bottom: 2px solid #000; border-radius: 0; margin-bottom: 20px; }
+            .meta-grid { border-top: 1px solid #ccc; color: black; }
+            .meta-item span { color: #555; }
+            .score-container { box-shadow: none; border: 1px solid #000; page-break-inside: avoid; }
+            .score-box { background: #eee; border: 1px solid #aaa; }
+            .report-table { box-shadow: none; border: 1px solid #000; page-break-inside: auto; }
+            .report-table tr { page-break-inside: avoid; page-break-after: auto; }
+            .report-table th { background: #ddd; color: black; border-bottom: 1px solid #000; }
+            .report-table td { border-bottom: 1px solid #ddd; }
+            .actions-panel { display: none; }
+            .obs-card { border: 1px solid #000; page-break-inside: avoid; }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="card">
-            <h1 style="margin-top:0; color: var(--primary); font-size: 1.8rem;">📋 Painel de Conferência e Emissão Externa</h1>
-            <p class="no-print" style="color: #475569; font-size: 0.95rem;">Revise a pontuação acumulada, as inconformidades automáticas levantadas por indicador e confirme para baixar o documento oficial estruturado.</p>
+        <!-- Cabeçalho Principal -->
+        <div class="header-report">
+            <span style="font-size: 0.85rem; text-transform: uppercase; font-weight: bold; tracking: 0.05em; opacity: 0.8;">Sistema de Vigilância Sanitária</span>
+            <h1 style="margin: 6px 0 0 0; font-size: 2rem; font-weight: 800;">Relatório de Fiscalização Consolidado</h1>
+            <p style="margin: 4px 0 0 0; opacity: 0.8; font-size: 1rem;">Mapeamento Técnico de Riscos Operacionais e Estruturais em Centro Cirúrgico</p>
             
-            <!-- Quadro de Pontuação Dinâmica -->
-            <div id="quadroStatus" class="score-box">
-                <span id="labelStatus" style="font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase;">Processando Amostragem...</span>
-                <span id="notaFinal" class="score-val">0 / 30</span>
+            <!-- Grid Populado por JS -->
+            <div class="meta-grid" id="cabecalhoDados">
+                <div class="meta-item"><span>Estabelecimento</span><strong id="lblHospital">-</strong></div>
+                <div class="meta-item"><span>CNPJ / Cadastro</span><strong id="lblCnpj">-</strong></div>
+                <div class="meta-item"><span>Agente Fiscal</span><strong id="lblFiscal">-</strong></div>
+                <div class="meta-item"><span>Data de Inspeção</span><strong id="lblData">-</strong></div>
             </div>
+        </div>
 
-            <!-- Listagem Avançada de Pendências e Status por Item -->
-            <h3 style="color: var(--primary); margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px;">🔍 Varredura de Pendências & Observações por Item</h3>
-            <div id="containerPendencias"></div>
+        <!-- Bloco de Score Geral -->
+        <div class="score-container">
+            <div class="score-box">
+                <span class="num" id="txtMedia">0.0</span>
+                <span class="label">Média Global</span>
+            </div>
+            <div class="score-diagnostic">
+                <h2>Classificação de Risco Sanitário</h2>
+                <p id="txtDiagnostico">Calculando o diagnóstico da planta física e assistencial...</p>
+            </div>
+        </div>
 
-            <!-- Caixa de Texto Livre Inserida -->
-            <h3 style="color: var(--primary); margin-top: 30px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px;">✍️ Memorial Descritivo Adicional (Campo Livre)</h3>
-            <div style="background: #fafafa; padding: 16px; border-radius: 8px; border: 1px solid var(--border); font-family: monospace; font-size: 0.95rem; white-space: pre-wrap;" id="renderObs"></div>
+        <!-- Corpo do Relatório / Tabela -->
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Ind.</th>
+                    <th style="width: 30%;">Indicador Avaliado</th>
+                    <th style="width: 10%; text-align: center;">Nota</th>
+                    <th style="width: 50%;">Enquadramento Identificado em Campo</th>
+                </tr>
+            </thead>
+            <tbody id="corpoRelatorio">
+                <!-- Preenchido dinamicamente via JS -->
+            </tbody>
+        </table>
 
-            <!-- Painel Executivo de Ações -->
-            <div class="action-box no-print">
-                <button onclick="baixarDocumentoTexto()" class="btn success">💾 Confirmar e Baixar Documento (.TXT)</button>
-                <button onclick="window.print()" class="btn primary">🖨️ Imprimir Relatório</button>
-                <a href="parte4.html" class="btn secondary">🔄 Corrigir Dados</a>
+        <!-- Particularidades / Campo Livre -->
+        <div class="obs-card">
+            <h3>Particularidades Técnicas e Termos de Notificação</h3>
+            <p id="txtObs">Nenhuma observação extra cadastrada.</p>
+        </div>
+
+        <!-- Painel Inferior de Navegação e Ações -->
+        <div class="actions-panel">
+            <button onclick="window.history.back()" class="btn secondary">⬅️ Corrigir Parte 4</button>
+            <div>
+                <button onclick="limparET reiniciar()" class="btn secondary" style="margin-right: 8px;">🔄 Nova Inspeção</button>
+                <button onclick="window.print()" class="btn success">🖨️ Emitir PDF / Imprimir</button>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const rawData = localStorage.getItem('inspecao_p4_data');
-            if(!rawData) {
-                alert("Nenhum registro de amostragem ativa localizado. Retornando.");
-                window.location.href = 'parte4.html';
+        // Mapeamento dos títulos legíveis de cada indicador para o relatório
+        const titulosIndicadores = {
+            ind1: "Identificação Externa do Bloco Cirúrgico",
+            ind2: "Controle de Fluxos e Acesso de Pessoas",
+            ind3: "Rastreabilidade e Validade de Insumos Estéreis",
+            ind4: "Garantia de Fluxos Internos (Cruzamento Crítico)",
+            ind5: "Gerenciamento de Resíduos Sólidos do Serviço de Saúde (RSSS)",
+            ind6: "Equipamentos de Proteção Individual (EPI)",
+            ind7: "Vestimentas da Equipe Cirúrgica",
+            ind8: "Lavabos Cirúrgicos e Degermação das Mãos",
+            ind9: "Higienização das Mãos (HM)",
+            ind10: "Estrutura Física da Planta",
+            ind11: "Manutenção da Estrutura Física",
+            ind12: "Condições de Iluminação Operacional",
+            ind13: "Sistema Elétrico de Emergência (Suporte Crítico)",
+            ind14: "Climatização Filtrada de Áreas Críticas",
+            ind15: "Equipamentos e Materiais das Salas Cirúrgicas",
+            ind16: "Equipamentos e Materiais da Sala de RPA",
+            ind17: "Manutenção Corretiva e Preventiva de Equipamentos",
+            ind18: "Limpeza e Desinfecção do Ambiente e Equipamentos",
+            ind19: "Armazenamento de Materiais e Interface CME",
+            ind20: "Protocolo para Cirurgia Segura (Checklist)"
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Recupera todas as chaves da esteira de dados
+            const p1 = JSON.parse(localStorage.getItem('inspecao_p1_data')) || {};
+            const p2 = JSON.parse(localStorage.getItem('inspecao_p2_data')) || {};
+            const p3 = JSON.parse(localStorage.getItem('inspecao_p3_data')) || {};
+            const p4 = JSON.parse(localStorage.getItem('inspecao_p4_data')) || {};
+
+            // Se a esteira estiver vazia, avisa o usuário
+            if (!p1.hospital) {
+                alert("Nenhum dado de inspeção localizado no ecossistema local. Por favor, inicie a partir da Parte 1.");
                 return;
             }
 
-            const data = JSON.parse(rawData);
-            
-            // Soma aritmética das respostas coletadas
-            const notaTotal = data.ind15.value + data.ind16.value + data.ind17.value + data.ind18.value + data.ind19.value + data.ind20.value;
-            
-            const quadroStatus = document.getElementById('quadroStatus');
-            const labelStatus = document.getElementById('labelStatus');
-            const notaFinal = document.getElementById('notaFinal');
-            
-            notaFinal.innerText = `${notaTotal} / 30`;
+            // Injeta Cabeçalho
+            document.getElementById('lblHospital').innerText = p1.hospital;
+            document.getElementById('lblCnpj').innerText = p1.cnpj || "Não Informado";
+            document.getElementById('lblFiscal').innerText = p1.fiscal;
+            document.getElementById('lblData').innerText = p1.dataIns ? p1.dataIns.split('-').reverse().join('/') : '-';
 
-            // Aplicação da regra de negócio de corte crítico do aplicativo
-            if(notaTotal < 20) {
-                quadroStatus.className = "score-box status-alert";
-                labelStatus.innerHTML = "❌ STATUS INTERNO: INACEITÁVEL (PONTUAÇÃO INFERIOR A META DE 20 PONTOS)";
-            } else {
-                quadroStatus.className = "score-box status-ok";
-                labelStatus.innerHTML = "✅ STATUS INTERNO: VIÁVEL / ADEQUADO PARA ENVIO FINANCEIRO";
-            }
-
-            document.getElementById('renderObs').innerText = data.obs;
-
-            // Mapeamento nominal para o relatório final
-            const nomesIndicadores = {
-                ind15: "15. Equipamentos e Materiais das Salas Cirúrgicas",
-                ind16: "16. Equipamentos e Materiais da RPA",
-                ind17: "17. Manutenção de Equipamentos e Calibração",
-                ind18: "18. Limpeza, Desinfecção do Ambiente e Saneantes",
-                ind19: "19. Armazenamento de Materiais Esterilizados / CME",
-                ind20: "20. Protocolo de Verificação de Cirurgia Segura"
+            // Une todos os indicadores em um objeto centralizado de processamento
+            const indicadoresConsolidados = {
+                ind1: p1.ind1, ind2: p1.ind2, ind3: p1.ind3, ind4: p1.ind4, ind5: p1.ind5,
+                ind6: p2.ind6, ind7: p2.ind7, ind8: p2.ind8, ind9: p2.ind9,
+                ind10: p3.ind10, ind11: p3.ind11, ind12: p3.ind12, ind13: p3.ind13, ind14: p3.ind14,
+                ind15: p4.ind15, ind16: p4.ind16, ind17: p4.ind17, ind18: p4.ind18, ind19: p4.ind19, ind20: p4.ind20
             };
 
-            const container = document.getElementById('containerPendencias');
-            
-            // Loop para identificar pendências (Qualquer nota menor que 5 gera observação técnica de melhoria)
-            Object.keys(nomesIndicadores).forEach(key => {
-                const item = data[key];
-                const div = document.createElement('div');
-                
-                if(item.value < 5) {
-                    div.className = "item-pendencia";
-                    div.innerHTML = `<strong>⚠️ PENDÊNCIA NO ITEM ${nomesIndicadores[key]}:</strong><br>
-                                     <em>Enquadramento Atual:</em> Nota ${item.value} - "${item.text}"<br>
-                                     <span style="color:#9a3412; font-size:0.88rem; display:block; margin-top:4px;">💡 Orientação para ajuste externo: Providenciar adequação documental ou operacional para atingir o nível máximo de conformidade (Nota 5).</span>`;
-                } else {
-                    div.className = "item-conforme";
-                    div.innerHTML = `<strong>💪 CONFORME - ${nomesIndicadores[key]}:</strong> Nota 5 (Nível Máximo de Eficiência Atingido).`;
+            const tbody = document.getElementById('corpoRelatorio');
+            let somaNotas = 0;
+            let totalIndicadores = 0;
+
+            // Loop para processar cada indicador e montar as linhas da tabela
+            for (let i = 1; i <= 20; i++) {
+                const chave = `ind${i}`;
+                const dadosInd = indicadoresConsolidados[chave];
+
+                if (dadosInd) {
+                    const nota = dadosInd.value;
+                    const texto = dadosInd.text;
+                    somaNotas += nota;
+                    totalIndicadores++;
+
+                    // Define classe de cor baseada no score
+                    let classeCor = "score-high";
+                    if (nota <= 1) classeCor = "score-low";
+                    else if (nota <= 3) classeCor = "score-mid";
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-weight: bold; color: #64748b;">#${String(i).padStart(2, '0')}</td>
+                        <td style="font-weight: 600; color: #1e293b;">${titulosIndicadores[chave]}</td>
+                        <td style="text-align: center;"><span class="badge-score ${classeCor}">${nota}</span></td>
+                        <td style="color: #475569; line-height: 1.4;">${texto}</td>
+                    `;
+                    tbody.appendChild(tr);
                 }
-                container.appendChild(div);
-            });
+            }
+
+            // Processa Médias e Diagnóstico de Classificação de Risco
+            const mediaGeral = somaNotas / totalIndicadores;
+            document.getElementById('txtMedia').innerText = mediaGeral.toFixed(1);
+
+            let diagnosticoText = "";
+            if (mediaGeral >= 4.0) {
+                diagnosticoText = "<strong>Baixo Risco (Conformidade Alta):</strong> O bloco cirúrgico apresenta excelência nas barreiras técnicas, rastreabilidade estruturada de insumos e processos de biossegurança controlados de acordo com as normas da ANVISA.";
+            } else if (mediaGeral >= 2.5) {
+                diagnosticoText = "<strong>Médio Risco (Conformidade Moderada):</strong> Foram identificadas inconformidades pontuais. O estabelecimento requer plano de ação corretiva de curto prazo para adequar processos de manutenção, registros e refinamento estrutural.";
+            } else {
+                diagnosticoText = "<strong>Alto Risco (Crítico):</strong> Desvios estruturais e assistenciais severos identificados. Alto potencial de contaminação cruzada ou falhas de suporte à vida. Necessita de intervenção sanitária imediata e plano de contingência rigoroso.";
+            }
+            document.getElementById('txtDiagnostico').innerHTML = diagnosticoText;
+
+            // Injeta as observações em campo livre
+            document.getElementById('txtObs').innerText = p4.obs || "Nenhuma observação extra cadastrada.";
         });
 
-        function baixarDocumentoTexto() {
-            const data = JSON.parse(localStorage.getItem('inspecao_p4_data'));
-            const notaTotal = data.ind15.value + data.ind16.value + data.ind17.value + data.ind18.value + data.ind19.value + data.ind20.value;
-            const statusTxt = notaTotal < 20 ? "INACEITÁVEL (Abaixo da Meta Crítica)" : "ADEQUADO / APROVADO";
-
-            let doc = `========================================================\n`;
-            doc += `      DOCUMENTO OFICIAL DE ANÁLISE OPERACIONAL EM CAMPO\n`;
-            doc += `========================================================\n`;
-            doc += `Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} às ${new Date().toLocaleTimeString('pt-BR')}\n`;
-            doc += `Pontuação Geral Encontrada: ${notaTotal} de 30 pontos possíveis.\n`;
-            doc += `Parecer do Sistema: ${statusTxt}\n`;
-            doc += `--------------------------------------------------------\n\n`;
-            doc += `[EXTRATO DE ENQUADRAMENTO E NOTAS]:\n`;
-            doc += `- Item 15 (Equipamentos de Sala): Nota ${data.ind15.value} -> ${data.ind15.text}\n`;
-            doc += `- Item 16 (Materiais RPA): Nota ${data.ind16.value} -> ${data.ind16.text}\n`;
-            doc += `- Item 17 (Manutenção Ativos): Nota ${data.ind17.value} -> ${data.ind17.text}\n`;
-            doc += `- Item 18 (Limpeza/Saneantes): Nota ${data.ind18.value} -> ${data.ind18.text}\n`;
-            doc += `- Item 19 (CME/Armazenamento): Nota ${data.ind19.value} -> ${data.ind19.text}\n`;
-            doc += `- Item 20 (Cirurgia Segura): Nota ${data.ind20.value} -> ${data.ind20.text}\n\n`;
-            doc += `--------------------------------------------------------\n`;
-            doc += `[MEMORIAL DESCRITIVO / OBSERVAÇÕES DO AGENTE]:\n`;
-            doc += `${data.obs}\n\n`;
-            doc += `========================================================\n`;
-            doc += `Fim do Documento - Gerado Automaticamente no Repositório Presença.`;
-
-            // Cria o gatilho físico de download do arquivo .txt
-            const blob = new Blob([doc], { type: 'text/plain;charset=utf-8' });
-            const link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = `Relatorio_Final_Operacional_${new Date().toISOString().slice(0,10)}.txt`;
-            link.click();
+        function limparETreiniciar() {
+            if (confirm("Deseja limpar todos os dados armazenados e iniciar uma nova rota de fiscalização?")) {
+                localStorage.clear();
+                window.location.href = 'parte1.html';
+            }
         }
     </script>
 </body>
