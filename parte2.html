@@ -30,18 +30,18 @@
             <p style="margin: 8px 0 0 0; opacity: 0.9; font-size: 0.95rem;">Parte 2: Biossegurança, Paramentação e Higienização</p>
         </div>
 
-        <form action="parte3.html">
+        <form id="formParte2">
             <!-- Indicador 6 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 33, 47 e 50 RDC 63/2011</span>
                 <h2>6. Equipamentos de Proteção Individual (EPI)</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind6" value="0" required> <span><strong>0</strong> - Não possui ou não utiliza EPI.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind6" value="1"> <span><strong>1</strong> - EPIs incompletos, insuficientes ou profissionais deixam o local vestindo EPI.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind6" value="2"> <span><strong>2</strong> - Possui EPIs em número suficiente, mas não utilizam conforme POP.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind6" value="3"> <span><strong>3</strong> - EPIs suficientes, instruções disponíveis e profissionais não saem do setor com eles.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind6" value="4"> <span><strong>4</strong> - Existe Plano de Gerenciamento e substituição periódica dos EPIs.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind6" value="5"> <span><strong>5</strong> - Aquisição de EPIs leva em consideração características individuais dos trabalhadores.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="0" data-text="Não possui ou não utiliza EPI." required> <span><strong>0</strong> - Não possui ou não utiliza EPI.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="1" data-text="EPIs incompletos, insuficientes ou profissionais deixam o local vestindo EPI."> <span><strong>1</strong> - EPIs incompletos, insuficientes ou profissionais deixam o local vestindo EPI.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="2" data-text="Possui EPIs em número suficiente, mas não utilizam conforme POP."> <span><strong>2</strong> - Possui EPIs em número suficiente, mas não utilizam conforme POP.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="3" data-text="EPIs suficientes, instruções disponíveis e profissionais não saem do setor com eles."> <span><strong>3</strong> - EPIs suficientes, instruções disponíveis e profissionais não saem do setor com eles.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="4" data-text="Existe Plano de Gerenciamento e substituição periódica dos EPIs."> <span><strong>4</strong> - Existe Plano de Gerenciamento e substituição periódica dos EPIs.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind6" value="5" data-text="Aquisição de EPIs leva em consideração características individuais dos trabalhadores."> <span><strong>5</strong> - Aquisição de EPIs leva em consideração características individuais dos trabalhadores.</span></label>
                 </div>
             </div>
 
@@ -50,12 +50,12 @@
                 <span class="badge">Amparo: Art. 17 e 46 RDC 63/2011</span>
                 <h2>7. Vestimentas da Equipe Cirúrgica</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind7" value="0" required> <span><strong>0</strong> - Ausência de vestimenta cirúrgica e/ou serviço não processa/lava as mesmas.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind7" value="1"> <span><strong>1</strong> - Não utilizadas por todos, ou saem do CC paramentados, ou sem processamento centralizado.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind7" value="2"> <span><strong>2</strong> - Serviço fornece e equipe usa adequadamente, mas em quantidade insuficiente para a demanda.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind7" value="3"> <span><strong>3</strong> - Serviço fornece vestimentas adequadas, em quantidade compatível, sendo o responsável pelo processamento.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind7" value="4"> <span><strong>4</strong> - Paramentação avaliada com ações registradas; serviço proíbe adornos e equipe cumpre.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind7" value="5"> <span><strong>5</strong> - Aquisição considera características individuais; procedimento avaliado sistematicamente.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="0" data-text="Ausência de vestimenta cirúrgica e/ou serviço não processa/lava as mesmas." required> <span><strong>0</strong> - Ausência de vestimenta cirúrgica e/ou serviço não processa/lava as mesmas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="1" data-text="Não utilizadas por todos, ou saem do CC paramentados, ou sem processamento centralizado."> <span><strong>1</strong> - Não utilizadas por todos, ou saem do CC paramentados, ou sem processamento centralizado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="2" data-text="Serviço fornece e equipe usa adequadamente, mas em quantidade insuficiente para a demanda."> <span><strong>2</strong> - Serviço fornece e equipe usa adequadamente, mas em quantidade insuficiente para a demanda.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="3" data-text="Serviço fornece vestimentas adequadas, em quantidade compatível, sendo o responsável pelo processamento."> <span><strong>3</strong> - Serviço fornece vestimentas adequadas, em quantidade compatível, sendo o responsável pelo processamento.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="4" data-text="Paramentação avaliada com ações registradas; serviço proíbe adornos e equipe cumpre."> <span><strong>4</strong> - Paramentação avaliada with ações registradas; serviço proíbe adornos e equipe cumpre.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind7" value="5" data-text="Aquisição considera características individuais; procedimento avaliado sistematicamente."> <span><strong>5</strong> - Aquisição considera características individuais; procedimento avaliado sistematicamente.</span></label>
                 </div>
             </div>
 
@@ -64,12 +64,12 @@
                 <span class="badge">Amparo: RDC 50/2002; RDC 63/2011</span>
                 <h2>8. Lavabos Cirúrgicos e Degermação das Mãos</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind8" value="0" required> <span><strong>0</strong> - Ausência de lavabos cirúrgicos ou produtos degermantes sem registro ANVISA.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind8" value="1"> <span><strong>1</strong> - Quantidade/profundidade incorreta, dispensadores com defeito ou falta de insumos.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind8" value="2"> <span><strong>2</strong> - Quantidade atende, mas lavabos distantes ou com torneiras manuais por contato.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind8" value="3"> <span><strong>3</strong> - Área exclusiva próxima às salas, torneiras com comandos automáticos/pedal/cotovelo e insumos completos.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind8" value="4"> <span><strong>4</strong> - Há relógio visível para escovação técnica e há registro de capacitação sobre preparo pré-operatório.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind8" value="5"> <span><strong>5</strong> - Procedimento avaliado sistematicamente com ações de conformidade e medidas corretivas registradas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="0" data-text="Ausência de lavabos cirúrgicos ou produtos degermantes sem registro ANVISA." required> <span><strong>0</strong> - Ausência de lavabos cirúrgicos ou produtos degermantes sem registro ANVISA.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="1" data-text="Quantidade/profundidade incorreta, dispensadores com defeito ou falta de insumos."> <span><strong>1</strong> - Quantidade/profundidade incorreta, dispensadores com defeito ou falta de insumos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="2" data-text="Quantidade atende, mas lavabos distantes ou com torneiras manuais por contato."> <span><strong>2</strong> - Quantidade atende, mas lavabos distantes ou com torneiras manuais por contato.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="3" data-text="Área exclusiva próxima às salas, torneiras com comandos automáticos/pedal/cotovelo e insumos completos."> <span><strong>3</strong> - Área exclusiva próxima às salas, torneiras com comandos automáticos/pedal/cotovelo e insumos completos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="4" data-text="Há relógio visível para escovação técnica e há registro de capacitação sobre preparo pré-operatório."> <span><strong>4</strong> - Há relógio visível para escovação técnica e há registro de capacitação sobre preparo pré-operatório.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind8" value="5" data-text="Procedimento avaliado sistematicamente com ações de conformidade e medidas corretivas registradas."> <span><strong>5</strong> - Procedimento avaliado sistematicamente com ações de conformidade e medidas corretivas registradas.</span></label>
                 </div>
             </div>
 
@@ -78,20 +78,48 @@
                 <span class="badge">Amparo: RDC 42/2010; RDC 36/2013</span>
                 <h2>9. Higienização das Mãos (HM)</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind9" value="0" required> <span><strong>0</strong> - Protocolo não implantado, falta de pias básicas ou produtos sem registro.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind9" value="1"> <span><strong>1</strong> - Protocolo desatualizado; dispensadores alcoólicos ausentes em pontos críticos ou com defeito.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind9" value="2"> <span><strong>2</strong> - Atende à legislação, exceto por não possuir capacitação de 100% dos profissionais.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind9" value="3"> <span><strong>3</strong> - Protocolo atualizado ("5 momentos") implantado, cartazes afixados, álcool gel em todos os pontos.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind9" value="4"> <span><strong>4</strong> - Indicadores de adesão monitorados indiretamente por consumo com notificação mensal à ANVISA.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind9" value="5"> <span><strong>5</strong> - Monitoramento direto de adesão (Estratégia Multimodal) e orientação ativa de pacientes.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="0" data-text="Protocolo não implantado, falta de pias básicas ou produtos sem registro." required> <span><strong>0</strong> - Protocolo não implantado, falta de pias básicas ou produtos sem registro.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="1" data-text="Protocolo desatualizado; dispensadores alcoólicos ausentes em pontos críticos ou com defeito."> <span><strong>1</strong> - Protocolo desatualizado; dispensadores alcoólicos ausentes em pontos críticos ou com defeito.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="2" data-text="Atende à legislação, exceto por não possuir capacitação de 100% dos profissionais."> <span><strong>2</strong> - Atende à legislação, exceto por não possuir capacitação de 100% dos profissionais.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="3" data-text="Protocolo atualizado (&quot;5 momentos&quot;) implantado, cartazes afixados, álcool gel em todos os pontos."> <span><strong>3</strong> - Protocolo atualizado ("5 momentos") implantado, cartazes afixados, álcool gel em todos os pontos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="4" data-text="Indicadores de adesão monitorados indiretamente por consumo com notificação mensal à ANVISA."> <span><strong>4</strong> - Indicadores de adesão monitorados indiretamente por consumo com notificação mensal à ANVISA.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind9" value="5" data-text="Monitoramento direto de adesão (Estratégia Multimodal) e orientação ativa de pacientes."> <span><strong>5</strong> - Monitoramento direto de adesão (Estratégia Multimodal) e orientação ativa de pacientes.</span></label>
                 </div>
             </div>
 
             <div class="nav-buttons">
                 <a href="parte1.html" class="btn secondary">⬅️ Voltar</a>
-                <button type="submit" class="btn">Avançar para Parte 3 ➡️</button>
+                <button type="button" onclick="salvarEAvancar()" class="btn">Avançar para Parte 3 ➡️</button>
             </div>
         </form>
     </div>
+
+    <script>
+        function salvarEAvancar() {
+            const form = document.getElementById('formParte2');
+            if(!form.checkValidity()) {
+                alert('Por favor, preencha todos os indicadores da Parte 2 antes de avançar.');
+                return;
+            }
+
+            const getSelectedData = (name) => {
+                const el = document.querySelector(`input[name="${name}"]:checked`);
+                return { value: parseInt(el.value), text: el.getAttribute('data-text') };
+            };
+
+            const payloadP2 = {
+                ind6: getSelectedData('ind6'),
+                ind7: getSelectedData('ind7'),
+                ind8: getSelectedData('ind8'),
+                ind9: getSelectedData('ind9')
+            };
+
+            // Salva na esteira mantendo o isolamento por etapa
+            localStorage.setItem('inspecao_p2_data', JSON.stringify(payloadP2));
+            
+            // Avança para a etapa 3
+            window.location.href = 'parte3.html';
+        }
+    </script>
 </body>
 </html>
