@@ -107,7 +107,7 @@
         }
         .score-high { background: #d1fae5; color: #065f46; }
         .score-mid { background: #fef3c7; color: #92400e; }
-        .score-low { background: #fee2e2; color: #92400e; }
+        .score-low { background: #fee2e2; color: #dc2626; }
 
         /* Área de Observações */
         .obs-card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 12px; margin-bottom: 40px; }
@@ -121,7 +121,6 @@
         .btn.success { background: var(--success); }
         .btn:hover { opacity: 0.95; }
 
-        /* Configurações de Impressão PDF limpa */
         @media print {
             body { background: white; padding: 0; color: black; }
             .header-report { background: none; color: black; padding: 0; box-shadow: none; border-bottom: 2px solid #000; border-radius: 0; margin-bottom: 20px; }
@@ -141,13 +140,11 @@
 <body>
 
     <div class="container">
-        <!-- Cabeçalho Principal -->
         <div class="header-report">
-            <span style="font-size: 0.85rem; text-transform: uppercase; font-weight: bold; tracking: 0.05em; opacity: 0.8;">Sistema de Vigilância Sanitária</span>
+            <span style="font-size: 0.85rem; text-transform: uppercase; font-weight: bold; opacity: 0.8;">Sistema de Vigilância Sanitária</span>
             <h1 style="margin: 6px 0 0 0; font-size: 2rem; font-weight: 800;">Relatório de Fiscalização Consolidado</h1>
             <p style="margin: 4px 0 0 0; opacity: 0.8; font-size: 1rem;">Mapeamento Técnico de Riscos Operacionais e Estruturais em Centro Cirúrgico</p>
             
-            <!-- Grid Populado por JS -->
             <div class="meta-grid" id="cabecalhoDados">
                 <div class="meta-item"><span>Estabelecimento</span><strong id="lblHospital">-</strong></div>
                 <div class="meta-item"><span>CNPJ / Cadastro</span><strong id="lblCnpj">-</strong></div>
@@ -156,7 +153,6 @@
             </div>
         </div>
 
-        <!-- Bloco de Score Geral -->
         <div class="score-container">
             <div class="score-box">
                 <span class="num" id="txtMedia">0.0</span>
@@ -168,45 +164,40 @@
             </div>
         </div>
 
-        <!-- Corpo do Relatório / Tabela -->
         <table class="report-table">
             <thead>
                 <tr>
                     <th style="width: 10%;">Ind.</th>
-                    <th style="width: 30%;">Indicador Avaliado</th>
+                    <th style="width: 35%;">Indicador Avaliado</th>
                     <th style="width: 10%; text-align: center;">Nota</th>
-                    <th style="width: 50%;">Enquadramento Identificado em Campo</th>
+                    <th style="width: 45%;">Enquadramento Identificado em Campo</th>
                 </tr>
             </thead>
             <tbody id="corpoRelatorio">
-                <!-- Preenchido dinamicamente via JS -->
-            </tbody>
+                </tbody>
         </table>
 
-        <!-- Particularidades / Campo Livre -->
         <div class="obs-card">
             <h3>Particularidades Técnicas e Termos de Notificação</h3>
             <p id="txtObs">Nenhuma observação extra cadastrada.</p>
         </div>
 
-        <!-- Painel Inferior de Navegação e Ações -->
         <div class="actions-panel">
             <button onclick="window.history.back()" class="btn secondary">⬅️ Corrigir Parte 4</button>
             <div>
-                <button onclick="limparET reiniciar()" class="btn secondary" style="margin-right: 8px;">🔄 Nova Inspeção</button>
+                <button onclick="limparETreiniciar()" class="btn secondary" style="margin-right: 8px;">🔄 Nova Inspeção</button>
                 <button onclick="window.print()" class="btn success">🖨️ Emitir PDF / Imprimir</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Mapeamento dos títulos legíveis de cada indicador para o relatório
         const titulosIndicadores = {
             ind1: "Identificação Externa do Bloco Cirúrgico",
             ind2: "Controle de Fluxos e Acesso de Pessoas",
             ind3: "Rastreabilidade e Validade de Insumos Estéreis",
             ind4: "Garantia de Fluxos Internos (Cruzamento Crítico)",
-            ind5: "Gerenciamento de Resíduos Sólidos do Serviço de Saúde (RSSS)",
+            ind5: "Gerenciamento de Resíduos Sólidos (RSSS)",
             ind6: "Equipamentos de Proteção Individual (EPI)",
             ind7: "Vestimentas da Equipe Cirúrgica",
             ind8: "Lavabos Cirúrgicos e Degermação das Mãos",
@@ -225,48 +216,53 @@
         };
 
         window.addEventListener('DOMContentLoaded', () => {
-            // Recupera todas as chaves da esteira de dados
+            // Resgata os dados brutos salvos pelas partes
             const p1 = JSON.parse(localStorage.getItem('inspecao_p1_data')) || {};
             const p2 = JSON.parse(localStorage.getItem('inspecao_p2_data')) || {};
             const p3 = JSON.parse(localStorage.getItem('inspecao_p3_data')) || {};
             const p4 = JSON.parse(localStorage.getItem('inspecao_p4_data')) || {};
 
-            // Se a esteira estiver vazia, avisa o usuário
-            if (!p1.hospital) {
-                alert("Nenhum dado de inspeção localizado no ecossistema local. Por favor, inicie a partir da Parte 1.");
-                return;
-            }
+            // Fallback caso a P1 não use a nova estrutura limpa
+            const hospital = p1.hospital || "Estabelecimento não identificado";
+            const cnpj = p1.cnpj || "Não informado";
+            const fiscal = p1.fiscal || "Não informado";
+            const dataIns = p1.dataIns || "";
 
-            // Injeta Cabeçalho
-            document.getElementById('lblHospital').innerText = p1.hospital;
-            document.getElementById('lblCnpj').innerText = p1.cnpj || "Não Informado";
-            document.getElementById('lblFiscal').innerText = p1.fiscal;
-            document.getElementById('lblData').innerText = p1.dataIns ? p1.dataIns.split('-').reverse().join('/') : '-';
+            document.getElementById('lblHospital').innerText = hospital;
+            document.getElementById('lblCnpj').innerText = cnpj;
+            document.getElementById('lblFiscal').innerText = fiscal;
+            document.getElementById('lblData').innerText = dataIns ? dataIns.split('-').reverse().join('/') : 'Não Informada';
 
-            // Une todos os indicadores em um objeto centralizado de processamento
-            const indicadoresConsolidados = {
-                ind1: p1.ind1, ind2: p1.ind2, ind3: p1.ind3, ind4: p1.ind4, ind5: p1.ind5,
-                ind6: p2.ind6, ind7: p2.ind7, ind8: p2.ind8, ind9: p2.ind9,
-                ind10: p3.ind10, ind11: p3.ind11, ind12: p3.ind12, ind13: p3.ind13, ind14: p3.ind14,
-                ind15: p4.ind15, ind16: p4.ind16, ind17: p4.ind17, ind18: p4.ind18, ind19: p4.ind19, ind20: p4.ind20
-            };
+            // Agrupa todos os indicadores brutos de forma centralizada
+            const rawData = { ...p1, ...p2, ...p3, ...p4 };
 
             const tbody = document.getElementById('corpoRelatorio');
             let somaNotas = 0;
             let totalIndicadores = 0;
 
-            // Loop para processar cada indicador e montar as linhas da tabela
             for (let i = 1; i <= 20; i++) {
                 const chave = `ind${i}`;
-                const dadosInd = indicadoresConsolidados[chave];
+                let dado = rawData[chave];
 
-                if (dadosInd) {
-                    const nota = dadosInd.value;
-                    const texto = dadosInd.text;
+                if (dado !== undefined && dado !== null) {
+                    let nota = 0;
+                    let texto = "Enquadramento selecionado.";
+
+                    // Tratamento Ultra-Resiliente: aceita objeto {value, text} ou dado direto
+                    if (typeof dado === 'object' && dado.value !== undefined) {
+                        nota = parseInt(dado.value);
+                        texto = dado.text || `Opção selecionada: ${nota}`;
+                    } else if (typeof dado === 'object' && dado.nota !== undefined) {
+                        nota = parseInt(dado.nota);
+                        texto = dado.texto || `Opção selecionada: ${nota}`;
+                    } else {
+                        nota = parseInt(dado);
+                        texto = `Indicador respondido com enquadramento nível ${nota}.`;
+                    }
+
                     somaNotas += nota;
                     totalIndicadores++;
 
-                    // Define classe de cor baseada no score
                     let classeCor = "score-high";
                     if (nota <= 1) classeCor = "score-low";
                     else if (nota <= 3) classeCor = "score-mid";
@@ -274,7 +270,7 @@
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td style="font-weight: bold; color: #64748b;">#${String(i).padStart(2, '0')}</td>
-                        <td style="font-weight: 600; color: #1e293b;">${titulosIndicadores[chave]}</td>
+                        <td style="font-weight: 600; color: #1e293b;">${titulosIndicadores[chave] || chave}</td>
                         <td style="text-align: center;"><span class="badge-score ${classeCor}">${nota}</span></td>
                         <td style="color: #475569; line-height: 1.4;">${texto}</td>
                     `;
@@ -282,22 +278,28 @@
                 }
             }
 
-            // Processa Médias e Diagnóstico de Classificação de Risco
-            const mediaGeral = somaNotas / totalIndicadores;
-            document.getElementById('txtMedia').innerText = mediaGeral.toFixed(1);
+            // Exibe a média e o diagnóstico final
+            if (totalIndicadores > 0) {
+                const mediaGeral = somaNotas / totalIndicadores;
+                document.getElementById('txtMedia').innerText = mediaGeral.toFixed(1);
 
-            let diagnosticoText = "";
-            if (mediaGeral >= 4.0) {
-                diagnosticoText = "<strong>Baixo Risco (Conformidade Alta):</strong> O bloco cirúrgico apresenta excelência nas barreiras técnicas, rastreabilidade estruturada de insumos e processos de biossegurança controlados de acordo com as normas da ANVISA.";
-            } else if (mediaGeral >= 2.5) {
-                diagnosticoText = "<strong>Médio Risco (Conformidade Moderada):</strong> Foram identificadas inconformidades pontuais. O estabelecimento requer plano de ação corretiva de curto prazo para adequar processos de manutenção, registros e refinamento estrutural.";
+                let diagnosticoText = "";
+                if (mediaGeral >= 4.0) {
+                    diagnosticoText = "<strong>Baixo Risco (Conformidade Alta):</strong> O bloco cirúrgico apresenta alto nível de conformidade técnica, barreiras estruturais seguras e processos de biossegurança controlados.";
+                } else if (mediaGeral >= 2.5) {
+                    diagnosticoText = "<strong>Médio Risco (Conformidade Moderada):</strong> Foram identificadas inconformidades operacionais ou prediais pontuais. Requer elaboração de Plano de Ação Corretiva para adequação de rotinas.";
+                } else {
+                    diagnosticoText = "<strong>Alto Risco (Crítico):</strong> Desvios severos identificados nas barreiras de biossegurança ou sistemas críticos de suporte à vida. Necessita de intervenção e plano de contingência sanitário imediato.";
+                }
+                document.getElementById('txtDiagnostic').innerHTML = diagnosticoText;
             } else {
-                diagnosticoText = "<strong>Alto Risco (Crítico):</strong> Desvios estruturais e assistenciais severos identificados. Alto potencial de contaminação cruzada ou falhas de suporte à vida. Necessita de intervenção sanitária imediata e plano de contingência rigoroso.";
+                // Caso extremo de vazamento total de dados do localStorage
+                document.getElementById('txtMedia').innerText = "0.0";
+                document.getElementById('txtDiagnostico').innerHTML = "<span style='color: var(--danger)'>Nenhum indicador foi detectado no armazenamento local. Certifique-se de preencher as etapas anteriores e avançar pelos botões oficiais.</span>";
             }
-            document.getElementById('txtDiagnostico').innerHTML = diagnosticoText;
 
-            // Injeta as observações em campo livre
-            document.getElementById('txtObs').innerText = p4.obs || "Nenhuma observação extra cadastrada.";
+            // Recuperação do campo livre de observações
+            document.getElementById('txtObs').innerText = p4.obs || rawData.obs || "Nenhuma observação extra cadastrada.";
         });
 
         function limparETreiniciar() {
