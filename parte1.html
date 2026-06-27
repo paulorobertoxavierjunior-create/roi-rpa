@@ -35,81 +35,105 @@
             <p style="margin: 8px 0 0 0; opacity: 0.9; font-size: 0.95rem;">Parte 1: Gestão de Pessoas, Capacitação e Rotinas Assistenciais</p>
         </div>
 
-        <form action="parte2.html">
-            <!-- Indicador 1 -->
+        <form id="formParte1">
             <div class="card">
                 <span class="badge">Amparo: Art. 15 e 16 RDC 63/2011</span>
                 <h2>1. Coordenação / Supervisão</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind1" value="0" required> <span><strong>0</strong> - Não dispõe de profissional responsável legalmente habilitado.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind1" value="1"> <span><strong>1</strong> - Conta com habilitado, mas não responde pelas questões operacionais.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind1" value="2"> <span><strong>2</strong> - Atua nas questões operacionais, porém não está formalmente designado.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind1" value="3"> <span><strong>3</strong> - Unidade conta com profissional habilitado que responde e está formalmente designado.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind1" value="4"> <span><strong>4</strong> - Profissional responsável é exclusivo do setor.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind1" value="5"> <span><strong>5</strong> - Profissional responsável é exclusivo do setor e possui pós-graduação na área.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind1" value="0" data-text="Não dispõe de profissional responsável legalmente habilitado." required> <span><strong>0</strong> - Não dispõe de profissional responsável legalmente habilitado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind1" value="1" data-text="Conta com habilitado, mas não responde pelas questões operacionais."> <span><strong>1</strong> - Conta com habilitado, mas não responde pelas questões operacionais.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind1" value="2" data-text="Atua nas questões operacionais, porém não está formalmente designado."> <span><strong>2</strong> - Atua nas questões operacionais, porém não está formalmente designado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind1" value="3" data-text="Unidade conta com profissional habilitado que responde e está formalmente designado."> <span><strong>3</strong> - Unidade conta com profissional habilitado que responde e está formalmente designado.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind1" value="4" data-text="Profissional responsável é exclusivo do setor."> <span><strong>4</strong> - Profissional responsável é exclusivo do setor.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind1" value="5" data-text="Profissional responsável é exclusivo do setor e possui pós-graduação na área."> <span><strong>5</strong> - Profissional responsável é exclusivo do setor e possui pós-graduação na área.</span></label>
                 </div>
             </div>
 
-            <!-- Indicador 2 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 17, 29 e 30 RDC 63/2011</span>
                 <h2>2. Dimensionamento da Equipe</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind2" value="0" required> <span><strong>0</strong> - Equipe multiprofissional insuficiente para o perfil de atendimento e demanda.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind2" value="1"> <span><strong>1</strong> - Possui equipe, mas um único médico atua como cirurgião e anestesista simultaneamente.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind2" value="2"> <span><strong>2</strong> - O médico anestesista ou cirurgião atende em mais de uma sala simultaneamente.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind2" value="3"> <span><strong>3</strong> - Possui equipe multiprofissional dimensionada conforme perfil de atendimento e demanda.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind2" value="4"> <span><strong>4</strong> - Existe plano de contingência para substituição de pessoal e equipes cirúrgicas.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind2" value="5"> <span><strong>5</strong> - Equipe multiprofissional com capacidade operacional superior ao atendimento da demanda.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind2" value="0" data-text="Equipe multiprofissional insuficiente para o perfil de atendimento e demanda." required> <span><strong>0</strong> - Equipe multiprofissional insuficiente para o perfil de atendimento e demanda.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind2" value="1" data-text="Possui equipe, mas um único médico atua como cirurgião e anestesista simultaneamente."> <span><strong>1</strong> - Possui equipe, mas um único médico atua como cirurgião e anestesista simultaneamente.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind2" value="2" data-text="O médico anestesista ou cirurgião atende em mais de uma sala simultaneamente."> <span><strong>2</strong> - O médico anestesista ou cirurgião atende em mais de uma sala simultaneamente.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind2" value="3" data-text="Possui equipe multiprofissional dimensionada conforme perfil de atendimento e demanda."> <span><strong>3</strong> - Possui equipe multiprofissional dimensionada conforme perfil de atendimento e demanda.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind2" value="4" data-text="Existe plano de contingência para substituição de pessoal e equipes cirúrgicas."> <span><strong>4</strong> - Existe plano de contingência para substituição de pessoal e equipes cirúrgicas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind2" value="5" data-text="Equipe multiprofissional com capacidade operacional superior ao atendimento da demanda."> <span><strong>5</strong> - Equipe multiprofissional com capacidade operacional superior ao atendimento da demanda.</span></label>
                 </div>
             </div>
 
-            <!-- Indicador 3 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 32 e 33 RDC 63/2011</span>
                 <h2>3. Capacitação Profissional</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind3" value="0" required> <span><strong>0</strong> - Não há registro de capacitação.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind3" value="1"> <span><strong>1</strong> - Existem apenas alguns registros e/ou não realizam capacitações permanentes.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind3" value="2"> <span><strong>2</strong> - Registro de capacitações permanentes, porém com dados incompletos.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind3" value="3"> <span><strong>3</strong> - Registro periódico completo (programa mínimo, higiene, EPI/EPC, vestimentas, carga horária).</span></label>
-                    <label class="radio-option"><input type="radio" name="ind3" value="4"> <span><strong>4</strong> - Existe planejamento das capacitações e há registro de avaliação percentual de treinados.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind3" value="5"> <span><strong>5</strong> - A capacitação inclui incentivo da organização para participação em eventos científicos da área.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind3" value="0" data-text="Não hay registro de capacitação." required> <span><strong>0</strong> - Não há registro de capacitação.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind3" value="1" data-text="Existem apenas alguns registros e/ou não realizam capacitações permanentes."> <span><strong>1</strong> - Existem apenas alguns registros e/ou não realizam capacitações permanentes.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind3" value="2" data-text="Registro de capacitações permanentes, porém com dados incompletos."> <span><strong>2</strong> - Registro de capacitações permanentes, porém com dados incompletos.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind3" value="3" data-text="Registro periódico completo (programa mínimo, higiene, EPI/EPC, vestimentas, carga horária)."> <span><strong>3</strong> - Registro periódico completo (programa mínimo, higiene, EPI/EPC, vestimentas, carga horária).</span></label>
+                    <label class="radio-option"><input type="radio" name="ind3" value="4" data-text="Existe planejamento das capacitações e há registro de avaliação percentual de treinados."> <span><strong>4</strong> - Existe planejamento das capacitações e há registro de avaliação percentual de treinados.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind3" value="5" data-text="A capacitação inclui incentivo da organização para participação em eventos científicos da área."> <span><strong>5</strong> - A capacitação inclui incentivo da organização para participação em eventos científicos da área.</span></label>
                 </div>
             </div>
 
-            <!-- Indicador 4 -->
             <div class="card">
                 <span class="badge">Amparo: Art. 7, 23 e 51 RDC 63/2011</span>
                 <h2>4. Padronização de Normas e Rotinas dos Procedimentos Assistenciais</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind4" value="0" required> <span><strong>0</strong> - Não dispõe de normas, procedimentos e rotinas técnicas.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind4" value="1"> <span><strong>1</strong> - Normas em elaboração, diferem da prática real ou não estão disponíveis.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind4" value="2"> <span><strong>2</strong> - Dispõe de normas escritas de todos os processos, porém desatualizadas e/ou sem aprovação.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind4" value="3"> <span><strong>3</strong> - Dispõe de normas e rotinas técnicas escritas, atualizadas e aprovadas em local de fácil acesso.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind4" value="4"> <span><strong>4</strong> - Normas revisadas a cada nova tecnologia com registro de divulgação e treinamento.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind4" value="5"> <span><strong>5</strong> - Existe auditoria interna para verificação do cumprimento das normas e rotinas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind4" value="0" data-text="Não dispõe de normas, procedimentos e rotinas técnicas." required> <span><strong>0</strong> - Não dispõe de normas, procedimentos e rotinas técnicas.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind4" value="1" data-text="Normas em elaboração, diferem da prática real ou não estão disponíveis."> <span><strong>1</strong> - Normas em elaboração, diferem da prática real ou não estão disponíveis.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind4" value="2" data-text="Dispõe de normas escritas de todos os processos, porém desatualizadas e/ou sem aprovação."> <span><strong>2</strong> - Dispõe de normas escritas de todos os processos, porém desatualizadas and/or sem aprovação.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind4" value="3" data-text="Dispõe de normas e rotinas técnicas escritas, atualizadas e aprovadas em local de fácil acesso."> <span><strong>3</strong> - Dispõe de normas e rotinas técnicas escritas, atualizadas e aprovadas em local de fácil acesso.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind4" value="4" data-text="Normas revisadas a cada nova tecnologia com registro de divulgação e treinamento."> <span><strong>4</strong> - Normas revisadas a cada nova tecnologia com registro de divulgação e treinamento.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind4" value="5" data-text="Existe auditoria interna para verificação do cumprimento das normas e rotinas."> <span><strong>5</strong> - Existe auditoria interna para verificação do cumprimento das normas e rotinas.</span></label>
                 </div>
             </div>
 
-            <!-- Indicador 5 -->
             <div class="card">
                 <span class="badge">Amparo: Portaria 344/1998; RDC 63/2011</span>
                 <h2>5. Medicamentos</h2>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="ind5" value="0" required> <span><strong>0</strong> - Medicamentos estão fora do prazo de validade.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind5" value="1"> <span><strong>1</strong> - Organizados e na validade, mas dispensário acessível sem controle ou rastreabilidade.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind5" value="2"> <span><strong>2</strong> - Organizados e na validade com controle de acesso, mas sem controle de especiais.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind5" value="3"> <span><strong>3</strong> - Rotinas de rastreabilidade implantadas, controlados em local exclusivo sob chave.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind5" value="4"> <span><strong>4</strong> - Possui protocolo de antibioticoprofilaxia cirúrgica e controle formal de validade.</span></label>
-                    <label class="radio-option"><input type="radio" name="ind5" value="5"> <span><strong>5</strong> - Dispensário do Centro Cirúrgico sob a responsabilidade técnica de profissional farmacêutico.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind5" value="0" data-text="Medicamentos estão fora do prazo de validade." required> <span><strong>0</strong> - Medicamentos estão fora do prazo de validade.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind5" value="1" data-text="Organizados e na validade, mas dispensário acessível sem controle ou rastreabilidade."> <span><strong>1</strong> - Organizados e na validade, mas dispensário acessível sem controle ou rastreabilidade.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind5" value="2" data-text="Organizados e na validade com controle de acesso, mas sem controle de especiais."> <span><strong>2</strong> - Organizados e na validade com controle de acesso, mas sem controle de especiais.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind5" value="3" data-text="Rotinas de rastreabilidade implantadas, controlados em local exclusivo sob chave."> <span><strong>3</strong> - Rotinas de rastreabilidade implantadas, controlados em local exclusivo sob chave.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind5" value="4" data-text="Possui protocolo de antibioticoprofilaxia cirúrgica e controle formal de validade."> <span><strong>4</strong> - Possui protocolo de antibioticoprofilaxia cirúrgica e controle formal de validade.</span></label>
+                    <label class="radio-option"><input type="radio" name="ind5" value="5" data-text="Dispensário do Centro Cirúrgico sob a responsabilidade técnica de profissional farmacêutico."> <span><strong>5</strong> - Dispensário do Centro Cirúrgico sob a responsabilidade técnica de profissional farmacêutico.</span></label>
                 </div>
             </div>
 
             <div class="nav-buttons">
-                <button type="submit" class="btn">Avançar para Parte 2 ➡️</button>
+                <button type="button" onclick="salvarEAvancar()" class="btn">Avançar para Parte 2 ➡️</button>
             </div>
         </form>
     </div>
+
+    <script>
+        function salvarEAvancar() {
+            const form = document.getElementById('formParte1');
+            if(!form.checkValidity()) {
+                alert('Por favor, preencha todos os indicadores da Parte 1 antes de avançar.');
+                return;
+            }
+
+            const getSelectedData = (name) => {
+                const el = document.querySelector(`input[name="${name}"]:checked`);
+                return { value: parseInt(el.value), text: el.getAttribute('data-text') };
+            };
+
+            const payloadP1 = {
+                ind1: getSelectedData('ind1'),
+                ind2: getSelectedData('ind2'),
+                ind3: getSelectedData('ind3'),
+                ind4: getSelectedData('ind4'),
+                ind5: getSelectedData('ind5')
+            };
+
+            // Grava os dados da Parte 1 na esteira de forma segura
+            localStorage.setItem('inspecao_p1_data', JSON.stringify(payloadP1));
+            
+            // Redireciona para o arquivo seguinte
+            window.location.href = 'parte2.html';
+        }
+    </script>
 </body>
 </html>
